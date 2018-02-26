@@ -1,0 +1,33 @@
+* {
+  border: 1px solid lavender;
+}
+
+html,
+body {
+  background-color: #fff;
+  color: #212529;
+  height: 100vh;
+  text-align: center;
+  width: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#headline {
+  width: 100%;
+  text-align: center;
+}
+
+#search {
+  margin: 2em auto;
+}
+
+#albums {
+  margin: 2em auto;
+}

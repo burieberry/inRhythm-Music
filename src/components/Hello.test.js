@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Hello from './App';
+import Hello from './Hello';
 
 describe('Hello', () => {
   it('renders without crashing', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Albums = () => {
-
+const Albums = ({ albums }) => {
+  console.log(albums);
   // TODO: remove this when covers are added
   const albumPlaceholder = <div style={{ backgroundColor: 'grey', width: '250px', height: '250px', margin: '0 auto' }} />;
 

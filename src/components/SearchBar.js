@@ -22,9 +22,8 @@ class SearchBar extends Component {
   render() {
     const { handleChange, handleSubmit } = this;
     const { input } = this.state;
-
-    console.log('props in SearchBar', this.props);
-    console.log('state in SearchBar', this.state);
+    const { albums } = this.props;
+    console.log(albums);
 
     return (
       <form id="search" onSubmit={ handleSubmit } className="col-xs-12">
@@ -35,12 +34,24 @@ class SearchBar extends Component {
           placeholder="Enter an artist name"
           autoFocus="true"
         />
+        {/*<datalist id='artist'>
+          {
+            albums.map(artist => (
+              <option
+                key={artist.id}
+                value={artist.name}
+              />
+            ))
+          }
+        </datalist>*/}
         <button id="search-btn" className="btn btn-lg">Search</button>
       </form>
     );
   }
 }
 
+const mapState = ({ albums }) => ({ albums });
+
 const mapDispatch = ({ fetchAlbums });
 
-export default connect(null, mapDispatch)(SearchBar);
+export default connect(mapState, mapDispatch)(SearchBar);

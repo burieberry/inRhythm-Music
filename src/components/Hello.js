@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
 import Albums from './Albums';
 import store, { fetchAlbums } from '../store';
@@ -14,10 +15,12 @@ class Hello extends Component {
         <h1 id="headline">Albums inRhythm ♪♫♬</h1>
         <p>Find albums by any artist!</p>
         <SearchBar />
-        <Albums />
+        <Albums {...this.props} />
       </div>
     );
   }
 }
 
-export default Hello;
+const mapState = ({ albums }) => ({ albums });
+
+export default connect(mapState)(Hello);

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchAlbums } from '../store';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -15,6 +17,9 @@ class SearchBar extends Component {
     const { handleChange } = this;
     const { input } = this.state;
 
+    console.log('props in SearchBar', this.props);
+    console.log('state in SearchBar', this.state);
+
     return (
       <form id="search" className="col-xs-12">
         <input
@@ -29,4 +34,11 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapState = (props) => {
+  console.log(props)
+  return {};
+}
+
+const mapDispatch = ({ fetchAlbums });
+
+export default connect(mapState, mapDispatch)(SearchBar);

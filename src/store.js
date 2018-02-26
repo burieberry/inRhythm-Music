@@ -6,7 +6,11 @@ import axios from 'axios';
 const GET_ALBUMS = 'GET_ALBUMS';
 const iTunesUrl = 'https://itunes.apple.com/search?term=';
 
-const getAlbums = (albums) => {
+const initialState = {
+  albums: []
+}
+
+export const getAlbums = (albums) => {
   return {
     type: GET_ALBUMS,
     albums
@@ -21,12 +25,12 @@ export const fetchAlbums = (term) => dispatch => {
     });
 };
 
-const reducer = (albums = [], action) => {
-  switch(action.type) {
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
     case GET_ALBUMS:
-      return action.categories;
+      return { ...state, albums: action.albums };
     default:
-      return albums;
+      return state;
   }
 };
 

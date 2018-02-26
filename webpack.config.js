@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   module: {
     rules: [
@@ -9,13 +7,6 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }, {
-        test: /\.(scss|css)$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { modules: true, importLoaders: 1 }},
-          'sass-loader'
-        ]
       }
     ]
   }

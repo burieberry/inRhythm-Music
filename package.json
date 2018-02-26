@@ -11,10 +11,7 @@
     "test": "jest"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./src/enzyme.setup.js",
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    "setupTestFrameworkScriptFile": "./src/enzyme.setup.js"
   },
   "keywords": [],
   "author": "Burcu Noyan",
@@ -40,16 +37,12 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
-    "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^22.4.2",
     "morgan": "^1.9.0",
-    "node-sass": "^4.7.2",
     "nodemon": "^1.15.1",
     "react-test-renderer": "^16.2.0",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.20.2",
     "webpack": "^4.0.0",
     "webpack-cli": "^2.0.9"
   }

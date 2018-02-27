@@ -8,9 +8,9 @@ const iTunesUrl = 'https://itunes.apple.com/search?term=';
 
 const initialState = {
   albums: []
-}
+};
 
-export const getAlbums = (albums) => {
+const getAlbums = (albums) => {
   return {
     type: GET_ALBUMS,
     albums
@@ -18,7 +18,7 @@ export const getAlbums = (albums) => {
 };
 
 export const fetchAlbums = (term) => dispatch => {
-  return axios.get(`${iTunesUrl}${term}&entity=allArtist&attribute=allArtistTerm`)
+  return axios.get(`${iTunesUrl}${term}&entity=album&attribute=allArtistTerm`)
     .then(res => res.data)
     .then(albums => {
       dispatch(getAlbums(albums.results));

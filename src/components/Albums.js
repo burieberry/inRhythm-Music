@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 const Albums = ({ albums }) => {
   console.log(albums);
   const artist = albums.length ? albums[0].artistName : null;
+  const allAlbums = albums.length ? albums.slice(1) : null;
 
   const resize = function(img) {
     return img.replace('100x100bb', '250x250bb');
-  }
+  };
 
   return (
     <div id="albums" className="container-fluid">
@@ -17,17 +18,24 @@ const Albums = ({ albums }) => {
       }
       <div className="row">
       {
-        albums &&
-        albums.map(album => {
+        (artist && albums.length === 1 ) && (<p>No albums found.</p>)
+      }
+      {
+        allAlbums &&
+        allAlbums.map(album => {
           return (
             <div key={ album.collectionId } className="album col-md-4">
               <Link to={ album.collectionViewUrl } target="_blank">
                 <h4 className="album-title">{ album.collectionName }</h4>
-                <img
-                  src={ resize(album.artworkUrl100) }
-                  alt={`Album cover of ${ album.collectionName }`}
-                  className="cover-img"
-                />
+                {
+                  album.artworkUrl100 && (
+                    <img
+                      src={ resize(album.artworkUrl100) }
+                      alt={`Album cover of ${ album.collectionName }`}
+                      className="cover-img"
+                    />
+                  )
+                }
               </Link>
             </div>
           );

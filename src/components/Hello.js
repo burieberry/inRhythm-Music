@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import Albums from './Albums';
-import store, { fetchAlbums } from '../store';
+import store, { fetchArtists } from '../store';
 
 class Hello extends Component {
   componentDidMount() {
-    store.dispatch(fetchAlbums);
+    store.dispatch(fetchArtists);
   }
 
   render() {

@@ -33,6 +33,10 @@ ul {
   margin: 2em auto;
 }
 
+#artists {
+  text-align: left;
+}
+
 #albums {
   margin: 2em auto;
 }

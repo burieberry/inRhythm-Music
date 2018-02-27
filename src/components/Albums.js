@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Albums = ({ albums }) => {
@@ -8,7 +9,6 @@ const Albums = ({ albums }) => {
   const resize = function(img) {
     return img.replace('100x100bb', '250x250bb');
   }
-
 
   return (
     <div id="albums" className="container-fluid">
@@ -38,4 +38,6 @@ const Albums = ({ albums }) => {
   )
 };
 
-export default Albums;
+const mapState = ({ albums }) => ({ albums });
+
+export default connect(mapState)(Albums);

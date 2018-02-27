@@ -12,6 +12,7 @@ body {
 }
 
 a:hover {
+  color: #e83e8c;
   text-decoration: none;
 }
 
@@ -39,6 +40,14 @@ ul {
 .album {
   padding: 1em 0;
   margin: 1em 0;
+}
+
+.album a {
+  color: #333;
+}
+
+.album a:hover {
+  color: #e83e8c;
 }
 
 .album-title {

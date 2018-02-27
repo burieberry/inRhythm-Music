@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Albums = ({ albums }) => {
   console.log(albums);
@@ -20,12 +21,14 @@ const Albums = ({ albums }) => {
         albums.map(album => {
           return (
             <div key={ album.collectionId } className="album col-md-4">
-              <h4 className="album-title">{ album.collectionName }</h4>
-              <img
-                src={ resize(album.artworkUrl100) }
-                alt={`Album cover of ${ album.collectionName }`}
-                className="cover-img"
-              />
+              <Link to={ album.collectionViewUrl } target="_blank">
+                <h4 className="album-title">{ album.collectionName }</h4>
+                <img
+                  src={ resize(album.artworkUrl100) }
+                  alt={`Album cover of ${ album.collectionName }`}
+                  className="cover-img"
+                />
+              </Link>
             </div>
           );
         })

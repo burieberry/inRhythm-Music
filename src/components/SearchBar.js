@@ -71,7 +71,7 @@ const Artists = ({ artists, albums, fetchAlbums }) => {
           artists.map(artist => {
             return (
               <li key={ artist.artistId }>
-                <button onClick={ (ev) => handleClick(ev, `${ artist.artistId }`) }>
+                <button className="btn btn-sm" onClick={ (ev) => handleClick(ev, `${ artist.artistId }`) }>
                   { artist.artistName }
                 </button>
               </li>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Artists from './Artists';
 import { fetchArtists, fetchAlbums } from '../store';
 
 class SearchBar extends Component {
@@ -11,15 +11,6 @@ class SearchBar extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    let searchTerm = '';
-    const { search } = this.props.location;
-    if (search) {
-      searchTerm = search.split('=')[1];
-    }
-    this.props.fetchArtists(searchTerm);
-  }
-
   handleChange(ev) {
     this.setState({ input: ev.target.value });
   }
@@ -28,7 +19,6 @@ class SearchBar extends Component {
     const { input } = this.state;
     ev.preventDefault();
     this.props.fetchArtists(input);
-    this.props.history.push({ search: `?search=${ input }` });
     this.setState({ submitted: true });
   }
 
@@ -61,36 +51,8 @@ class SearchBar extends Component {
   }
 }
 
-const Artists = ({ artists, fetchAlbums }) => {
-  const handleClick = function(ev, artistId) {
-    ev.preventDefault();
-    fetchAlbums(artistId);
-  };
-
-  return (
-    <div id="artists">
-      <h4>Select artist:</h4>
-      <ul>
-        {
-          artists.map(artist => {
-            return (
-              <li key={ artist.artistId }>
-                <button
-                  className="btn btn-xs"
-                  onClick={ (ev) => handleClick(ev, `${ artist.artistId }`) }>
-                  { artist.artistName }
-                </button>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  );
-}
-
 const mapState = ({ artists, albums }) => ({ artists, albums });
 
 const mapDispatch = ({ fetchArtists, fetchAlbums });
 
-export default withRouter(connect(mapState, mapDispatch)(SearchBar));
+export default connect(mapState, mapDispatch)(SearchBar);

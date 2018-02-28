@@ -4,20 +4,32 @@
 
 html,
 body {
-  background-color: #fff;
+  background-color: #f9fafb;
   color: #212529;
   height: 100vh;
   text-align: center;
   width: 100%;
 }
 
-a:hover {
-  color: #e83e8c;
+a:hover,
+button:hover {
+  color: #ef6b68;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #324754;
 }
 
 ul {
   list-style-type: none;
+}
+
+ul li {
+  padding: 10px 0;
 }
 
 #main {
@@ -25,20 +37,51 @@ ul {
 }
 
 #headline {
-  width: 100%;
+  font-size: 40px;
+  padding-top: 20px;
   text-align: center;
+  width: 100%;
 }
 
 #search {
   margin: 2em auto;
 }
 
+#search-box {
+  height: 40px;
+  background-color: #f9fafb;
+  border: none;
+  border-bottom: 1px solid #999;
+  font-size: 30px;
+  font-weight: 300;
+  padding: 0;
+  margin: .7em 0;
+}
+
+#search-box:active,
+#search-box:focus {
+  outline: 0;
+}
+
+#search-btn {
+  background-color: #ef6b68;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 1em;
+}
+
 #artists {
   text-align: left;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 #albums {
   margin: 2em auto;
+}
+
+.artist-li {
+  padding: 10px 5px;
 }
 
 .album {
@@ -51,7 +94,7 @@ ul {
 }
 
 .album a:hover {
-  color: #e83e8c;
+  color: #ef6b68;
 }
 
 .album-title {

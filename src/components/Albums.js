@@ -14,15 +14,13 @@ const Albums = ({ albums }) => {
   return (
     <div id="albums" className="container-fluid">
       {
-        artist && <h2>All Albums by { artist }</h2>
+        artist && <h3>All Albums by { artist }</h3>
       }
 
-    {/* Error message if no albums are found. */}
       {
         (artist && albums.length === 1 ) && <h5>No albums found.</h5>
       }
 
-    {/* Render albums */}
       <div className="row">
       {
         allAlbums &&

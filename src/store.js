@@ -31,16 +31,18 @@ export const fetchAlbums = (id) => dispatch => {
   return axios.get(albumSearchUrl)
     .then(res => res.data)
     .then(albums => {
+      dispatch(getArtists([])); // reset artists array
       dispatch(getAlbums(albums.results));
     });
 };
 
 export const fetchArtists = (term) => dispatch => {
-  const artistSearchUrl = `https://itunes.apple.com/search?term=${term}&entity=musicArtist&attribute=allArtistTerm&limit=10`;
+  const artistSearchUrl = `https://itunes.apple.com/search?term=${term}&entity=musicArtist&attribute=allArtistTerm`;
 
   return axios.get(artistSearchUrl)
     .then(res => res.data)
     .then(artists => {
+      dispatch(getAlbums([])); // reset albums array
       dispatch(getArtists(artists.results));
     });
 };

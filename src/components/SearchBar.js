@@ -6,7 +6,7 @@ import { fetchArtists, fetchAlbums } from '../store';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { input: '' };
+    this.state = { input: '', submitted: false };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,13 +29,13 @@ class SearchBar extends Component {
     ev.preventDefault();
     this.props.fetchArtists(input);
     this.props.history.push({ search: `?search=${ input }` });
+    this.setState({ submitted: true });
   }
 
   render() {
     const { handleChange, handleSubmit } = this;
-    const { input } = this.state;
-    const { artists } = this.props;
-    console.log(artists);
+    const { input, submitted } = this.state;
+    const { artists, albums } = this.props;
 
     return (
       <div>
@@ -50,14 +50,18 @@ class SearchBar extends Component {
           <button id="search-btn" className="btn btn-lg">Search</button>
         </form>
         {
-          artists && (<Artists { ...this.props } />)
+          (submitted && artists.length === 0 && albums.length === 0) &&
+            <h5>Artist not found. Please enter a valid name.</h5>
+        }
+        {
+          (artists && artists.length) ? <Artists { ...this.props } /> : null
         }
       </div>
     );
   }
 }
 
-const Artists = ({ artists, albums, fetchAlbums }) => {
+const Artists = ({ artists, fetchAlbums }) => {
   const handleClick = function(ev, artistId) {
     ev.preventDefault();
     fetchAlbums(artistId);
@@ -71,7 +75,9 @@ const Artists = ({ artists, albums, fetchAlbums }) => {
           artists.map(artist => {
             return (
               <li key={ artist.artistId }>
-                <button className="btn btn-sm" onClick={ (ev) => handleClick(ev, `${ artist.artistId }`) }>
+                <button
+                  className="btn btn-xs"
+                  onClick={ (ev) => handleClick(ev, `${ artist.artistId }`) }>
                   { artist.artistName }
                 </button>
               </li>
